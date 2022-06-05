@@ -313,9 +313,9 @@ export function Trans({
     i18nKey;
   const { hashTransKey } = reactI18nextOptions;
   const key = i18nKey || (hashTransKey ? hashTransKey(defaultValue) : defaultValue);
-  const interpolationOverride = values
-    ? tOptions.interpolation
-    : { interpolation: { ...tOptions.interpolation, prefix: '#$?', suffix: '?$#' } };
+  const interpolationOverride = {
+    interpolation: { ...i18n.options.interpolation, ...tOptions.interpolation },
+  };
   const combinedTOpts = {
     ...tOptions,
     count,
